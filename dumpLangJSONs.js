@@ -23,6 +23,7 @@ const obj = {
 for (let j = 0; j < getJSONFiles.length; j++) {
 	const pattern = 'locales';
 	const truncate = getJSONFiles[j].substr(getJSONFiles[j].indexOf(pattern), getJSONFiles[j].length - pattern.length);
+
 	let getLang = truncate.substr(0, truncate.lastIndexOf('/'));
 	getLang = getLang.substr(getLang.indexOf('/') + 1);
 
@@ -38,4 +39,4 @@ jsonfile.writeFileSync(path.join(globResult[0], '../found.json'), obj, { spaces:
 	}
 });
 
-console.log('All Language JSON dumped into found.json, this file will be used in the client.');
+console.log('All Language JSON dumped into found.json, this file will be used in the app.');
