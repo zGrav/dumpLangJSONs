@@ -6,12 +6,12 @@ const findFolderResult = new FindFolder('locales', { nottraversal: ['compiled'] 
 
 const glob = require('glob');
 
-const globResult = glob.sync(findFolderResult[0] + '/*/', { realpath: true });
+const globResult = glob.sync(findFolderResult[0] + '/*/');
 
 let getJSONFiles = [];
 
 for (let i = 0; i < globResult.length; i++) {
-	getJSONFiles = getJSONFiles.concat(glob.sync(globResult[i] + '/*', { realpath: true }));
+	getJSONFiles = getJSONFiles.concat(glob.sync(globResult[i] + '/*'));
 }
 
 const jsonfile = require('jsonfile');
@@ -27,7 +27,9 @@ for (let j = 0; j < getJSONFiles.length; j++) {
 	let getLang = truncate.substr(0, truncate.lastIndexOf('/'));
 	getLang = getLang.substr(getLang.indexOf('/') + 1);
 
-	obj.languages.push({ lang: getLang, file: getJSONFiles[j] });
+	const getFile = truncate.substr(truncate.lastIndexOf('/') + 1);
+
+	obj.languages.push({ lang: getLang, file: getFile });
 }
 
 const path = require('path');
