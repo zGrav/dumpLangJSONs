@@ -41,4 +41,4 @@ jsonfile.writeFileSync(path.join(globResult[0], '../found.json'), obj, { spaces:
 	}
 });
 
-console.log('All Language JSON dumped into found.json, this file will be used in the app.');
+console.log('All Language JSON dumped into ' + path.join(globResult[0], '../found.json') + ', this file will be used in the app.');
